@@ -10,23 +10,29 @@
 
         <h1>Soy <span th:text="${personalInfo.firstName} + ' ' + ${personalInfo.lastName}"></span>
             <br>
-            <span th:text="${personalInfo.title}"></span> con <span th:text="${personalInfo.yearsOfExperience}"> </span> años de experiencia en desarrollo web.
+            <span th:text="${personalInfo.title}"></span>
         </h1>
 
         <div class="profile-image-container">
             <img th:src="${personalInfo.profileImageUrl}" alt="Imagen de perfil" class="profile-picture">
         </div>
 
-        <p th:text="${personalInfo.profileDescription}"></p>
-
-        <div class="social-links">
-            <a th:href="${personalInfo.linkedinUrl}">Linkedin</a>
-            <a th:href="${personalInfo.githubUrl}"> Github</a>
+        <div class="contact-info">
         </div>
 
-        <div class="contact-info">
-            <p th:text="${personalInfo.email}"></p>
-            <p th:text="${personalInfo.phone}"></p>
+        <div class="social-links">
+            <a th:href="${personalInfo.linkedinUrl}" target="_blank" class="btn-social">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a th:href="${personalInfo.githubUrl}" target="_blank" class="btn-social">
+                <i class="fab fa-github"></i> Github
+            </a>
+        </div>
+
+        <div class="cta-container">
+            <a href="#contact" class="btn-primary">
+                <i class="fas fa-envelope"></i> CONTACTARME
+            </a>
         </div>
 
 

@@ -1,17 +1,34 @@
 # 🚀 Mi Portfolio Personal
 
-Bienvenido al repositorio de mi portfolio profesional. Este proyecto es una aplicación web dinámica diseñada para mostrar mi trayectoria, habilidades y proyectos, implementando una arquitectura de software robusta y escalable.
+[![Render](https://img.shields.io/badge/Render-Deployed-success?style=for-the-badge&logo=render&logoColor=white)](https://my-portfolio-backend-454a.onrender.com)
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4-green?style=for-the-badge&logo=springboot)
+
+Bienvenido al repositorio de mi portfolio profesional. Este proyecto es una aplicación web dinámica diseñada para mostrar mi trayectoria, habilidades y proyectos.
+
+---
+
+### 🟢 DEMO EN VIVO
+Puedes ver la aplicación funcionando ahora mismo aquí:
+
+👉 **[https://my-portfolio-backend-454a.onrender.com](https://my-portfolio-backend-454a.onrender.com)**
+
+> ⚠️ **Aviso de Tiempo de Carga:**
+> Al estar alojado en la capa gratuita de Render, el servidor entra en "reposo" cuando no se usa.
+> **La primera carga puede tardar unos 50 segundos en arrancar.** ¡Gracias por tu paciencia!
+
+---
 
 ## 💡 Contexto y Motivación del Proyecto
 
 ### ¿Por qué Java y Spring Boot para un Portfolio?
-Soy consciente de que utilizar una arquitectura backend robusta en Java para una web personal podría considerarse "sobreingeniería" (*overkill*), ya que una página estática bastaría.
+Soy consciente de que utilizar una arquitectura backend robusta en Java para una web personal podría considerarse "sobreingeniería", ya que una página estática bastaría.
 
 Sin embargo, **el objetivo principal de este proyecto no es solo el resultado visual, sino el código que lo sustenta**. He diseñado esta aplicación como un **entorno de práctica real** para:
 
 1.  **Aplicar Arquitectura Empresarial:** Implementar patrones MVC, DTOs y Servicios en un entorno controlado.
 2.  **Gestionar Datos Reales:** Salir de los ejemplos teóricos y enfrentarme a problemas de persistencia, relaciones SQL y migraciones con PostgreSQL.
-3.  **Seguridad y Despliegue:** Aprender a manejar variables de entorno y protección de credenciales.
+3.  **Seguridad y Despliegue:** Aprender a manejar variables de entorno, protección de credenciales y ciclos de vida de desarrollo de software (SDLC).
 
 En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis habilidades como **Backend Developer**.
 
@@ -20,15 +37,21 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 ## 🛠️ Tecnologías y Arquitectura
 
 ### Backend (Core)
-* **Java 21 & Spring Boot 3:** Framework principal.
+* **Java 21:** Última versión LTS del lenguaje.
+* **Spring Boot 4:** Framework principal en su versión más reciente (4.0.1).
 * **Spring Data JDBC:** Para la persistencia de datos eficiente.
-* **PostgreSQL:** Base de datos relacional.
+* **PostgreSQL:** Base de datos relacional (Producción).
 * **Lombok:** Para reducción de código repetitivo (*Boilerplate*).
 * **Bean Validation:** Validación de datos de entrada (JSR-380).
 
+### Testing & Calidad
+* **JUnit 5:** Framework de testing unitario.
+* **Mockito:** Mocking de repositorios para tests de servicios aislados.
+* **Coverage:** Validación de lógica de negocio y manejo de excepciones (`ValidationException`).
+
 ### Frontend
 * **Thymeleaf:** Motor de plantillas para renderizado en servidor (SSR).
-* **HTML5 & CSS3:** Diseño responsivo y estructurado.
+* **HTML5 & CSS3:** Diseño responsivo y estructurado (Sin frameworks JS pesados).
 
 ### Funcionalidades Clave implementadas
 * **Arquitectura MVC:** Separación clara entre Modelos, Vistas y Controladores.
@@ -38,18 +61,26 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 
 ---
 
-## 🚀 Estado del Despliegue y Ejecución
+## 🛡️ Política de Contacto y Privacidad
 
-Actualmente, el proyecto está configurado para **desarrollo local** (requiere configuración de base de datos PostgreSQL y variables de entorno).
+Como desarrollador Backend, la seguridad y la privacidad de los datos son prioritarias. Por ello, he implementado las siguientes medidas en el Frontend:
 
-🚧 **Nota para visitantes:**
-Para facilitar la visualización del proyecto sin necesidad de realizar instalaciones técnicas complejas en local, **estoy preparando el despliegue automático en la nube (Render)**.
+1.  **Protección de Datos:** No se exponen datos sensibles (teléfono, email personal) en el código fuente HTML para evitar el *scraping* por parte de bots y spammers.
+2.  **Formulario Seguro:** La comunicación se realiza a través de un formulario de contacto integrado con **Formspree**, garantizando que los mensajes lleguen sin comprometer la privacidad.
 
-### 📅 Roadmap (Próximos pasos)
-* [x] Desarrollo del Backend y Base de Datos.
-* [x] Integración de Frontend con Thymeleaf.
-* [ ] **Despliegue en Producción (v1.1):** Próximamente se incluirá aquí el enlace a la demo en vivo.
+---
 
-Si eres reclutador o desarrollador y deseas revisar el código fuente, la estructura del proyecto sigue los estándares habituales de Maven y Spring Boot.
+## 📅 Roadmap (Estado del Proyecto)
+
+Este proyecto está vivo y en constante evolución. Tras completar el MVP y el despliegue, el desarrollo se centra ahora en la **gestión dinámica de contenido y la calidad**:
+
+* [x] **Core & Despliegue:** Arquitectura MVC, Base de Datos PostgreSQL y Dockerización en Render.
+* [x] **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
+* [ ] **Gestión de Proyectos (En Progreso):**
+    * Maquetación de tablas y formularios para CRUD de proyectos.
+    * Implementación de subida de imágenes de proyectos a Base de Datos/Storage.
+    * Creación de fragmentos Thymeleaf reutilizables.
+* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para editar el contenido sin tocar la BD.
+* [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
 
 ---

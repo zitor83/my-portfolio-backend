@@ -67,7 +67,7 @@ public class SkillServiceImplTest {
 
     @Test
         //Aqui añadimos un nuevo @Mock arriba para hacer este test
-    void testSaveSkillThowsExceptionWhenInvalid() {
+    void testSaveSkillThrowsExceptionWhenInvalid() {
 
         Skill invalidSkill = new Skill();
         doAnswer(invocationOnMock -> {
