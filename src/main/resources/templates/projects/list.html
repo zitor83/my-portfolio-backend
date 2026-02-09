@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Proyectos</title>
+</head>
+<body>
+    <h2>Proyectos guardados</h2>
+    <a th:href="@{projects/new-project}">Crear nuevo proyecto</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>URL del Proyecto</th>
+                <th>Imagen del Proyecto</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projects}">
+            <td th:text="${project.title}">Título del Proyecto</td>
+            <td th:text="${project.description}">Descripción</td>
+            <td th:text="${project.projectUrl}">URL del Proyecto</td>
+            <td>
+                <img th:src="@{${project.imageUrl}}" width="150" height="150" alt="Imagen del Proyecto">
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</body>
+</html>

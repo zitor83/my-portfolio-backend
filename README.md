@@ -56,7 +56,11 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 ### Funcionalidades Clave implementadas
 * **Arquitectura MVC:** Separación clara entre Modelos, Vistas y Controladores.
 * **Patrón DTO (Data Transfer Object):** Desacoplamiento de la capa de persistencia y la vista.
-* **Gestión de Archivos:** Servicio personalizado (`FileStorageService`) para la subida segura de imágenes con renombrado único (UUID).
+* **Gestión de Proyectos Multimedia:** Sistema CRUD completo para proyectos que incluye:
+    * Subida de imágenes al servidor (*File Upload*).
+    * Renombrado seguro de archivos mediante UUID.
+    * Configuración de recursos estáticos para visualización en tiempo real.
+    * Validación de tamaño (Max 10MB) y manejo de excepciones de carga.
 * **Seguridad:** Gestión de credenciales mediante Variables de Entorno.
 
 ---
@@ -76,10 +80,11 @@ Este proyecto está vivo y en constante evolución. Tras completar el MVP y el d
 
 * [x] **Core & Despliegue:** Arquitectura MVC, Base de Datos PostgreSQL y Dockerización en Render.
 * [x] **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
-* [ ] **Gestión de Proyectos (En Progreso):**
-    * Maquetación de tablas y formularios para CRUD de proyectos.
-    * Implementación de subida de imágenes de proyectos a Base de Datos/Storage.
-    * Creación de fragmentos Thymeleaf reutilizables.
+* [x] **Gestión de Proyectos Multimedia:**
+    * Formulario de creación con subida de imágenes (`MultipartFile`).
+    * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
+    * Listado de proyectos con renderizado de imágenes.
+* [ ] **Refactorización UI/UX:** Maquetación avanzada de la tabla de proyectos y página de error personalizada (`error-page`).
 * [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para editar el contenido sin tocar la BD.
 * [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
 
