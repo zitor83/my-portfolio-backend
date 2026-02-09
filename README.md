@@ -60,7 +60,7 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
     * Subida de imágenes al servidor (*File Upload*).
     * Renombrado seguro de archivos mediante UUID.
     * Configuración de recursos estáticos para visualización en tiempo real.
-    * Validación de tamaño (Max 10MB) y manejo de excepciones de carga.
+    * Control de formato (JPG/PNG) y peso optimizado (Max 1MB).
 * **Seguridad:** Gestión de credenciales mediante Variables de Entorno.
 
 ---
@@ -83,8 +83,8 @@ Este proyecto está vivo y en constante evolución. Tras completar el MVP y el d
 * [x] **Gestión de Proyectos Multimedia:**
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
-    * Listado de proyectos con renderizado de imágenes.
-* [ ] **Refactorización UI/UX:** Maquetación avanzada de la tabla de proyectos y página de error personalizada (`error-page`).
+    * Integración de la sección dinámica en la Landing Page (Fragmentos Thymeleaf).
+* [ ] **Refactorización UI/UX:** Maquetación avanzada de la tabla de proyectos (Admin) y página de error personalizada (`error-page`).
 * [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para editar el contenido sin tocar la BD.
 * [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
 
