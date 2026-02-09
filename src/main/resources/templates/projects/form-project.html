@@ -3,41 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/style-form-project.css">
     <title>Gestión de Proyectos</title>
 </head>
 <body>
 
-    <h1>Formulario de Proyecto</h1>
-    <form th:action="@{/projects/save}" th:object="${projectDto}" method="post" enctype="multipart/form-data">
-        <div>
-            <label>Titulo:</label>
-            <input type="text" th:field="*{title}" required/>
+    <header>
+        <div class="container">
+            <div th:insert="fragments/nav :: nav"></div>
         </div>
-
-        <div>
-            <label>Descripcion:</label>
-            <textarea th:field= "*{description}" required></textarea>
+    </header>
+    <main>
+        <div class="container">
+            <section id="contact">
+                <h2>Formulario de Proyecto</h2>
+                <form class="contact-form" th:action="@{/projects/save}" th:object="${projectDto}" method="post" enctype="multipart/form-data">
+                    <input type="text" th:field="*{title}" placeholder="Título" required>
+                    <textarea th:field="*{description}" placeholder="Descripción" rows="6" required></textarea>
+                    <input type="url" th:field="*{projectUrl}" placeholder="URL del Proyecto">
+                    <label>Imagen del Proyecto</label>
+                    <input type="file" name="file" required>
+                    <input type="number" th:field="*{personalInfoId}" placeholder="ID de Información Personal" required>
+                    <button type="submit">Guardar Proyecto</button>
+                </form>
+            </section>
         </div>
-        <div>
-            <label>URL del Proyecto:</label>
-            <input type="url" th:field="*{projectUrl}"/>
-        </div>
-        <div>
-            <label>Imagen del Proyecto:</label>
-            <input type="file" name="file" required/>
-            <small>Formato permitido: JPG o PNG. Tamaño máximo: 1 MB.</small>
-        </div>
-        <div>
-            <label>ID de Informacion Personal:</label>
-            <input type="number" th:field="*{personalInfoId}" required/>
-        </div>
+    </main>
 
-
-        <button type="submit">Guardar Proyecto</button>
-
-
-
-    </form>
-
+    <div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>
