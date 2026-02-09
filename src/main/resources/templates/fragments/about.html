@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">x>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,10 @@
         <section id="about" th:fragment="about">
             <h2>SOBRE MI</h2>
             <p th:text="${personalInfo.profileDescription}"></p>
-            <button>Estos son mis proyectos</button>
+            <a href="#projects">
+                <button>Estos son mis proyectos</button>
+            </a>
+
         </section>
     </body>
 </html>

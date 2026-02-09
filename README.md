@@ -84,8 +84,13 @@ Este proyecto está vivo y en constante evolución. Tras completar el MVP y el d
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
     * Integración de la sección dinámica en la Landing Page (Fragmentos Thymeleaf).
-* [ ] **Refactorización UI/UX:** Maquetación avanzada de la tabla de proyectos (Admin) y página de error personalizada (`error-page`).
-* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para editar el contenido sin tocar la BD.
+* [x] **Refactorización UI/UX:**
+    * Maquetación avanzada de la tabla de administración de proyectos (CSS Grid/Flexbox).
+    * Estilizado del formulario de creación (`file-selector-button` personalizado).
+* [ ] **Mejoras Pendientes:**
+    * Página de error personalizada (`error-page.html`).
+    * Panel de administración seguro con **Spring Security**.
 * [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
 
 ---
+*Desarrollado con ❤️ por José Antonio Ortiz Sánchez*
