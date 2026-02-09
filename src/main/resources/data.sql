@@ -26,4 +26,4 @@ INSERT INTO experiences (job_title, company_name, start_date, end_date, descript
 ('Operations & Team Manager', 'Sector Hospitality', '2014-01-01', '2024-08-31', 'Liderazgo de equipos multidisciplinares, optimización de procesos operativos y gestión de KPIs en entornos de gran volumen.', 1);
 
 INSERT INTO projects (title, description, image_url, project_url, personal_info_id) VALUES
-('Portfolio Profesional', 'Desarrollo de este sitio web dinámico para centralizar mi trayectoria técnica y de gestión.', 'img/projects/project2.jpg', 'https://github.com/jaortiz/my-portfolio', 1);
+('Portfolio Profesional', 'Desarrollo de este sitio web dinámico para centralizar mi trayectoria técnica y de gestión.', 'img/projects/project2.jpg', 'https://github.com/zitor83/my-portfolio-backend', 1);
