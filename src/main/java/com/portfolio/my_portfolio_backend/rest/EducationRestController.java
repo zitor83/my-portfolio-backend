@@ -2,8 +2,6 @@ package com.portfolio.my_portfolio_backend.rest;
 
 import com.portfolio.my_portfolio_backend.model.Education;
 import com.portfolio.my_portfolio_backend.service.IEducationService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +9,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/education")
-public class EducationController {
+public class EducationRestController {
     private final IEducationService educationService;
 
-    public EducationController(IEducationService educationService) {
+    public EducationRestController(IEducationService educationService) {
         this.educationService = educationService;
     }
 
