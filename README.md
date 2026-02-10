@@ -56,11 +56,12 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 ### Funcionalidades Clave implementadas
 * **Arquitectura MVC:** Separación clara entre Modelos, Vistas y Controladores.
 * **Patrón DTO (Data Transfer Object):** Desacoplamiento de la capa de persistencia y la vista.
-* **Gestión de Proyectos Multimedia:** Sistema CRUD completo para proyectos que incluye:
+* **Gestión de Proyectos Multimedia (Fase 1):** Sistema de creación y visualización que incluye:
     * Subida de imágenes al servidor (*File Upload*).
     * Renombrado seguro de archivos mediante UUID.
     * Configuración de recursos estáticos para visualización en tiempo real.
     * Control de formato (JPG/PNG) y peso optimizado (Max 1MB).
+* **Manejo de Errores:** Páginas personalizadas y captura de excepciones (I/O) para una UX robusta.
 * **Seguridad:** Gestión de credenciales mediante Variables de Entorno.
 
 ---
@@ -80,16 +81,18 @@ Este proyecto está vivo y en constante evolución. Tras completar el MVP y el d
 
 * [x] **Core & Despliegue:** Arquitectura MVC, Base de Datos PostgreSQL y Dockerización en Render.
 * [x] **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
-* [x] **Gestión de Proyectos Multimedia:**
+* [x] **Gestión de Proyectos (Creación y Lectura):**
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
     * Integración de la sección dinámica en la Landing Page (Fragmentos Thymeleaf).
 * [x] **Refactorización UI/UX:**
-    * Maquetación avanzada de la tabla de administración de proyectos (CSS Grid/Flexbox).
-    * Estilizado del formulario de creación (`file-selector-button` personalizado).
-* [ ] **Mejoras Pendientes:**
-    * Página de error personalizada (`error-page.html`).
-    * Panel de administración seguro con **Spring Security**.
+    * Maquetación avanzada de la tabla de administración.
+    * Página de error personalizada (`error-page.html`) integrada con el diseño.
+* [ ] **Completar CRUD (Update & Delete):**
+    * Implementar botón de borrado (Eliminación en BD y limpieza de archivos físicos).
+    * Implementar formulario de edición (Gestión de reemplazo de imágenes).
+* [ ] **Navegación Backoffice:** Conectar la Landing Page (Pública) con el Panel de Administración (Privado) mediante un acceso gestionado.
+* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para proteger las rutas de gestión.
 * [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
 
 ---
