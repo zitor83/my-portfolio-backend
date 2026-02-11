@@ -84,16 +84,18 @@ Este proyecto está vivo y en constante evolución. Tras completar el MVP y el d
 * [x] **Gestión de Proyectos (Creación y Lectura):**
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
-    * Integración de la sección dinámica en la Landing Page (Fragmentos Thymeleaf).
+    * Integración de la sección dinámica en la Landing Page.
+* [x] **Gestión de Habilidades (CRUD Completo):**
+    * Listado de administración con estilos personalizados.
+    * Formulario para Crear y Editar habilidades.
+    * Funcionalidad de Eliminación con confirmación de seguridad.
+    * Mapeo avanzado Entidad-DTO.
 * [x] **Refactorización UI/UX:**
     * Maquetación avanzada de la tabla de administración.
-    * Página de error personalizada (`error-page.html`) integrada con el diseño.
-* [ ] **Completar CRUD (Update & Delete):**
-    * Implementar botón de borrado (Eliminación en BD y limpieza de archivos físicos).
-    * Implementar formulario de edición (Gestión de reemplazo de imágenes).
-* [ ] **Navegación Backoffice:** Conectar la Landing Page (Pública) con el Panel de Administración (Privado) mediante un acceso gestionado.
-* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security** para proteger las rutas de gestión.
-* [ ] **Integration Testing:** Tests de Controladores (`MockMvc`) y flujos completos.
+    * Página de error personalizada (`error-page.html`).
+* [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
+* [ ] **Navegación Backoffice:** Mejorar la conexión entre la vista pública y el panel privado.
+* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security**.
 
 ---
 *Desarrollado con ❤️ por José Antonio Ortiz Sánchez*
