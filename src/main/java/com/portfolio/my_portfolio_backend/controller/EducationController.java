@@ -47,8 +47,9 @@ public class EducationController {
     }
 
     @PostMapping("/save")
-    public String saveEducation(@Valid @ModelAttribute("educationDto") EducationDto educationDto, BindingResult result,
-                                 RedirectAttributes redirectAttributes) {
+    public String saveEducation(@Valid @ModelAttribute("educationDto") EducationDto educationDto,
+                                BindingResult result,
+                                RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "education/form-education";
         }

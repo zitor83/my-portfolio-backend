@@ -23,7 +23,7 @@
                 <a th:href="@{/skills}">Volver a la lista de Habilidades</a>
                 <a th:href="@{/logout}">Cerrar Sesión</a>
             </div>
-            <h2>Formulario de Habilidad</h2>
+            <h2 th:text="${skillDto.id == null ? 'Crear Nueva Habilidad Laboral' : 'Editar Habilidad Laboral'}">Formulario de Habilidad</h2>
 
             <form class="contact-form" th:action="@{/skills/save}" th:object="${skillDto}" method="post">
                 <input type="hidden" th:field="*{id}" />

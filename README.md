@@ -76,21 +76,22 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
 ---
 
 ## 📅 Roadmap (Estado del Proyecto)
-
-Este proyecto está vivo y en constante evolución. Tras completar el MVP y el despliegue, el desarrollo se centra ahora en la **gestión dinámica de contenido y la calidad**:
-
-* [x] **Core & Despliegue:** Arquitectura MVC, Base de Datos PostgreSQL y Dockerización en Render.
-* [x] **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
-* [x] **Gestión de Proyectos (Creación y Lectura):**
+* ✅ **Core & Despliegue:** Arquitectura MVC, Base de Datos PostgreSQL y Dockerización en Render.
+* ✅ **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
+* ✅ **Gestión de Proyectos (Creación y Lectura):**
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
     * Integración de la sección dinámica en la Landing Page.
-* [x] **Gestión de Habilidades (CRUD Completo):**
+* ✅ **Gestión de Habilidades (CRUD Completo):**
     * Listado de administración con estilos personalizados.
     * Formulario para Crear y Editar habilidades.
     * Funcionalidad de Eliminación con confirmación de seguridad.
     * Mapeo avanzado Entidad-DTO.
-* [x] **Refactorización UI/UX:**
+* ✅ **Gestión de Trayectoria (Experiencia y Educación):**
+    * Controladores y vistas implementados para el historial académico y laboral.
+    * Manejo avanzado de fechas con `LocalDate` y formateo visual en Thymeleaf (`#temporals`).
+    * Lógica condicional para experiencias "Actuales".
+* ✅ **Refactorización UI/UX:**
     * Maquetación avanzada de la tabla de administración.
     * Página de error personalizada (`error-page.html`).
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).

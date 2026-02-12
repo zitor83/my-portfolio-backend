@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -23,9 +24,11 @@ public class ExperienceDto {
 
     @NotNull(message = "La fecha de inicio no puede ser nula")
     @PastOrPresent(message = "La fecha de inicio no puede ser futura")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")// Aplicamos formato a la fecha
     private LocalDate startDate;
 
     @PastOrPresent(message = "La fecha de finalización no puede ser futura")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")// Aplicamos formato a la fecha
     private LocalDate endDate; //puede ser null si esta en curso
 
     @NotBlank(message = "La descripcion no puede estar vacia")
