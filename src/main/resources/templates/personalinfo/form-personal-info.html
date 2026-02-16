@@ -25,11 +25,11 @@
             </div>
             <h2 th:text="${personalInfoDto.id == null ? 'Crear Información Personal' : 'Editar Información Personal'}">Formulario de Información Personal</h2>
 
-            <div th:if="${message}">
-                <p th:text="${message}"></p>
+            <div th:if="${successMessage}">
+                <p th:text="${successMessage}"></p>
             </div>
-            <div th:if="${error}">
-                <p th:text="${error}"></p>
+            <div th:if="${errorMessage}">
+                <p th:text="${errorMessage}"></p>
             </div>
 
             <form class="contact-form" th:action="@{/personal-info/save}" th:object="${personalInfoDto}" method="post">

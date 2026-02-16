@@ -27,7 +27,7 @@ public class PersonalInfoDto {
     private String title;  // Ej: Full Stack Developer
 
     @NotBlank(message = "La descripcion no puede estar vacia")
-    @Size(min = 10,max = 200, message = "La descripcion debe tener entre 10 y 200 caracteres")
+    @Size(min = 10,max = 500, message = "La descripcion debe tener entre 10 y 500 caracteres")
     private String profileDescription; //Texto largo del "Who am I"
 
     @NotBlank(message = "La imagen no puede estar vacia")
