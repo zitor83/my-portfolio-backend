@@ -101,6 +101,11 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Diseño Responsive mediante Media Queries para gestión desde móviles.
     * Maquetación avanzada de tablas y formularios.
     * Página de error personalizada (`error-page.html`).
+* ✅ **Refactorización UI/UX:**
+    * Implementación de **Sticky Footer** (Pie de página siempre abajo) usando Flexbox.
+    * Ajuste de altura completa (100vh) para evitar espacios en blanco en pantallas grandes.
+    * Maquetación avanzada de la tabla de administración.
+    * Página de error personalizada (`error-page.html`).
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
 * [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security**.
 
