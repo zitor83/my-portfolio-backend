@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <nav th:fragment="nav-admin">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a th:href="@{/personal-info}">Informacion Personal</a></li>
+            <li><a th:href="@{/education}">Educación</a></li>
+            <li><a th:href="@{/projects}">Mis Proyectos</a></li>
+            <li><a th:href="@{/experience}">Experiencia</a></li>
+            <li><a th:href="@{/skills}">Habilidades</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>

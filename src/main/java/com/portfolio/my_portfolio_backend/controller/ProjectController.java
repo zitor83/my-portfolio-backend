@@ -30,7 +30,7 @@ public class ProjectController {
                 .map(ProjectMapper::toDto)
                 .toList();
         model.addAttribute("projects", projects);
-        return "projects/list";
+        return "projects/list-projects";
     }
 
     @GetMapping("/new-project")

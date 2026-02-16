@@ -91,11 +91,17 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Controladores y vistas implementados para el historial académico y laboral.
     * Manejo avanzado de fechas con `LocalDate` y formateo visual en Thymeleaf (`#temporals`).
     * Lógica condicional para experiencias "Actuales".
-* ✅ **Refactorización UI/UX:**
-    * Maquetación avanzada de la tabla de administración.
+* ✅ **Gestión de Información Personal (Perfil):**
+    * Estrategia "Single-User" (ID forzado) para gestión exclusiva del propietario.
+    * Arquitectura refactorizada: Validación web movida al Controlador, dejando el Servicio puro.
+    * Feedback al usuario corregido (`RedirectAttributes` vs `Model`).
+* ✅ **UI/UX y Navegación (Backoffice):**
+    * Implementación de menú de administración dedicado (`nav-admin`).
+    * Separación de la navegación pública vs privada.
+    * Diseño Responsive mediante Media Queries para gestión desde móviles.
+    * Maquetación avanzada de tablas y formularios.
     * Página de error personalizada (`error-page.html`).
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
-* [ ] **Navegación Backoffice:** Mejorar la conexión entre la vista pública y el panel privado.
 * [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security**.
 
 ---
