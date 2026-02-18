@@ -39,6 +39,7 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 ### Backend (Core)
 * **Java 21:** Última versión LTS del lenguaje.
 * **Spring Boot 4:** Framework principal en su versión más reciente (4.0.1).
+* **Spring Security:** Gestión de accesos, protección de rutas y autenticación.
 * **Spring Data JDBC:** Para la persistencia de datos eficiente.
 * **PostgreSQL:** Base de datos relacional (Producción).
 * **Lombok:** Para reducción de código repetitivo (*Boilerplate*).
@@ -62,7 +63,6 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
     * Configuración de recursos estáticos para visualización en tiempo real.
     * Control de formato (JPG/PNG) y peso optimizado (Max 1MB).
 * **Manejo de Errores:** Páginas personalizadas y captura de excepciones (I/O) para una UX robusta.
-* **Seguridad:** Gestión de credenciales mediante Variables de Entorno.
 
 ---
 
@@ -96,18 +96,17 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Arquitectura refactorizada: Validación web movida al Controlador, dejando el Servicio puro.
     * Feedback al usuario corregido (`RedirectAttributes` vs `Model`).
 * ✅ **UI/UX y Navegación (Backoffice):**
-    * Implementación de menú de administración dedicado (`nav-admin`).
-    * Separación de la navegación pública vs privada.
+    * Implementación de menú de administración dedicado (`nav-admin`) y separación pública/privada.
     * Diseño Responsive mediante Media Queries para gestión desde móviles.
+    * Implementación de **Sticky Footer** usando Flexbox (100vh) para evitar espacios en blanco.
     * Maquetación avanzada de tablas y formularios.
     * Página de error personalizada (`error-page.html`).
-* ✅ **Refactorización UI/UX:**
-    * Implementación de **Sticky Footer** (Pie de página siempre abajo) usando Flexbox.
-    * Ajuste de altura completa (100vh) para evitar espacios en blanco en pantallas grandes.
-    * Maquetación avanzada de la tabla de administración.
-    * Página de error personalizada (`error-page.html`).
+* ✅ **Infraestructura de Seguridad (Spring Security):**
+    * Integración de `spring-boot-starter-security`.
+    * Creación de `WebSecurityConfig` (`@EnableWebSecurity`) y `SecurityFilterChain`.
+    * Configuración inicial de rutas para mantener el acceso público en producción mientras se desarrolla el Backoffice.
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
-* [ ] **Seguridad Avanzada:** Implementación de panel de administración con **Spring Security**.
+* [ ] **Autenticación y Login:** Implementar login con credenciales seguras para proteger las rutas de administración de forma definitiva.
 
 ---
 *Desarrollado con ❤️ por José Antonio Ortiz Sánchez*
