@@ -105,6 +105,7 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Integración de `spring-boot-starter-security`.
     * Configuración granular de rutas (`SecurityFilterChain`): Backoffice protegido (`.authenticated()`) y Landing Page pública (`.permitAll()`).
     * Implementación de Autenticación en Memoria (`InMemoryUserDetailsManager`) con roles de administrador.
+    * **Transición a DB (En progreso):** Implementación de `BCryptPasswordEncoder`, generación de credenciales hasheadas y creación de esquema SQL (`users`).
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
 * [ ] **Autenticación y Login:** Implementar login con credenciales seguras para proteger las rutas de administración de forma definitiva.
 

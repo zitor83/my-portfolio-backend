@@ -27,3 +27,6 @@ INSERT INTO experiences (job_title, company_name, start_date, end_date, descript
 
 INSERT INTO projects (title, description, image_url, project_url, personal_info_id) VALUES
 ('Portfolio Profesional', 'Desarrollo de este sitio web dinámico para centralizar mi trayectoria técnica y de gestión.', 'img/projects/project2.jpg', 'https://github.com/zitor83/my-portfolio-backend', 1);
+
+INSERT INTO users (username,password,enabled) VALUES
+('admin','$2a$10$W9Lnpfi1hzzWqAKNZ4vSGOguR00v7KWeIpLa3ZnHlwrRUMVZ/.cAK', TRUE);
