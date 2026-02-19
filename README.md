@@ -103,8 +103,8 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Página de error personalizada (`error-page.html`).
 * ✅ **Infraestructura de Seguridad (Spring Security):**
     * Integración de `spring-boot-starter-security`.
-    * Creación de `WebSecurityConfig` (`@EnableWebSecurity`) y `SecurityFilterChain`.
-    * Configuración inicial de rutas para mantener el acceso público en producción mientras se desarrolla el Backoffice.
+    * Configuración granular de rutas (`SecurityFilterChain`): Backoffice protegido (`.authenticated()`) y Landing Page pública (`.permitAll()`).
+    * Implementación de Autenticación en Memoria (`InMemoryUserDetailsManager`) con roles de administrador.
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
 * [ ] **Autenticación y Login:** Implementar login con credenciales seguras para proteger las rutas de administración de forma definitiva.
 
