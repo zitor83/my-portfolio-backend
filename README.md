@@ -101,13 +101,13 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
     * Implementación de **Sticky Footer** usando Flexbox (100vh) para evitar espacios en blanco.
     * Maquetación avanzada de tablas y formularios.
     * Página de error personalizada (`error-page.html`).
-* ✅ **Infraestructura de Seguridad (Spring Security):**
+* ✅ **Seguridad y Autenticación (Spring Security):**
     * Integración de `spring-boot-starter-security`.
     * Configuración granular de rutas (`SecurityFilterChain`): Backoffice protegido (`.authenticated()`) y Landing Page pública (`.permitAll()`).
-    * Implementación de Autenticación en Memoria (`InMemoryUserDetailsManager`) con roles de administrador.
-    * **Transición a DB (En progreso):** Implementación de `BCryptPasswordEncoder`, generación de credenciales hasheadas y creación de esquema SQL (`users`).
+    * **Autenticación en Base de Datos:** Implementación de entidad `User`, DTO, Mapper y capa de persistencia (PostgreSQL).
+    * Implementación de `UserDetailsService` para conectar la base de datos con el flujo de login.
+    * Hasheo seguro de contraseñas utilizando el algoritmo `BCryptPasswordEncoder`.
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
-* [ ] **Autenticación y Login:** Implementar login con credenciales seguras para proteger las rutas de administración de forma definitiva.
 
 ---
 *Desarrollado con ❤️ por José Antonio Ortiz Sánchez*

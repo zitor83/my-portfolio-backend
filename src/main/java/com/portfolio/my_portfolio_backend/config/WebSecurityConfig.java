@@ -1,7 +1,10 @@
 package com.portfolio.my_portfolio_backend.config;
 
+import com.portfolio.my_portfolio_backend.service.IUserDetailsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -14,8 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-
+@RequiredArgsConstructor
 public class WebSecurityConfig {
+
+    private final IUserDetailsService userDetailsService;
 
     // Un @Bean le dice a Spring: "Crea este objeto y guárdalo en el contenedor"
     // Spring usará este objeto para aplicar la configuración de seguridad
@@ -26,7 +31,7 @@ public class WebSecurityConfig {
                         auth.requestMatchers("/education", "/experience", "/projects", "/skills", "/personal-info").authenticated()
                                 .requestMatchers("/education/new", "/education/save", "/education/edit/**", "/education/delete/**").authenticated()
                                 .requestMatchers("/experience/new", "/experience/save", "/experience/edit/**", "/experience/delete/**").authenticated()
-                                .requestMatchers("/projects/new", "/projects/save", "/projects/edit/**", "/projects/delete/**").authenticated()
+                                .requestMatchers("/projects/new-project", "/projects/save", "/projects/edit/**", "/projects/delete/**").authenticated()
                                 .requestMatchers("/skills/new", "/skills/save", "/skills/edit/**", "/skills/delete/**").authenticated()
                                 .requestMatchers("/personal-info/create", "/personal-info/save", "/personal-info/edit/**").authenticated()
 
@@ -39,16 +44,20 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.withUsername("admin")  // withDefaultPasswordEncoder está deprecado porque no es útil en producción, solo para pruebas. Lo cambiamos por withUsername.
-                .username("admin")
-                .password(passwordEncoder.encode("1234"))
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
+//    @Bean
+//    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+//        UserDetails user = User.withUsername("admin")  // withDefaultPasswordEncoder está deprecado porque no es útil en producción, solo para pruebas. Lo cambiamos por withUsername.
+//                .username("admin")
+//                .password(passwordEncoder.encode("1234"))
+//                .roles("ADMIN")
+//                .build();
+//        return new InMemoryUserDetailsManager(user);
+//
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
