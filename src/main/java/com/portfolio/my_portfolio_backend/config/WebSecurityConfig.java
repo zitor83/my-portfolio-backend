@@ -39,7 +39,10 @@ public class WebSecurityConfig {
                                 .requestMatchers("/education/personal/**", "/experience/personal/**", "/projects/personal/**", "/skills/personal/**").authenticated()
                                 .anyRequest().permitAll()
                 )
-                .formLogin(form -> form.permitAll());
+                .formLogin(form ->
+                        form.loginPage("/login").permitAll()
+
+                );
 
         return http.build();
     }
