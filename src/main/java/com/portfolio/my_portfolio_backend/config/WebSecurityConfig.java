@@ -45,9 +45,6 @@ public class WebSecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout") // Esta ruta no la hemos creado, la proporciona Spring Security para hacer logout
-                        .logoutRequestMatcher(request ->
-                                "GET".equalsIgnoreCase(request.getMethod()) && "/logout".equals(request.getRequestURI())
-                        ) // Permite cerrar sesion con un simple GET a /logout en vez de un POST
                         .logoutSuccessUrl("/login?logout") // Indica donde redirigir después de cerrar sesion
                         .invalidateHttpSession(true) // Destruye los datos de la sesion en memoria
                         .deleteCookies("JSESSIONID")

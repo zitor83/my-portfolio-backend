@@ -14,7 +14,7 @@ public class LoginController {
                                 Authentication authentication
                                 ){
         if(authentication != null && authentication.isAuthenticated()){
-            return "redirect:/";
+            return "redirect:/education";
         }
         if(error != null){
             model.addAttribute("error", "Usuario o contraseña incorrectos");

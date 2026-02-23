@@ -34,12 +34,21 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 
 ---
 
+## 🔐 Arquitectura de Seguridad: Modo Dual (Público vs. Privado)
+
+Para demostrar mis conocimientos en ciberseguridad y control de accesos, la aplicación está diseñada con un **Modo Dual** utilizando Spring Security:
+
+* **Modo Escaparate (Público):** Cualquier visitante puede navegar por la página principal, ver mis proyectos y mi experiencia. La interfaz es limpia y de solo lectura. Thymeleaf oculta de forma dinámica cualquier botón o enlace administrativo (`sec:authorize`).
+* **Modo Backoffice (Privado):** A través de una ruta de acceso segura y un formulario de Login personalizado, el propietario (yo) puede iniciar sesión. Al autenticarme contra la base de datos (contraseñas encriptadas con BCrypt), el servidor me otorga una sesión segura, la interfaz se transforma y se habilitan los paneles CRUD completos para gestionar el contenido de la web en tiempo real.
+
+---
+
 ## 🛠️ Tecnologías y Arquitectura
 
 ### Backend (Core)
 * **Java 21:** Última versión LTS del lenguaje.
 * **Spring Boot 4:** Framework principal en su versión más reciente (4.0.1).
-* **Spring Security:** Gestión de accesos, protección de rutas y autenticación.
+* **Spring Security 6:** Gestión de accesos, protección de rutas, autenticación y manejo de sesiones.
 * **Spring Data JDBC:** Para la persistencia de datos eficiente.
 * **PostgreSQL:** Base de datos relacional (Producción).
 * **Lombok:** Para reducción de código repetitivo (*Boilerplate*).
@@ -48,30 +57,10 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 ### Testing & Calidad
 * **JUnit 5:** Framework de testing unitario.
 * **Mockito:** Mocking de repositorios para tests de servicios aislados.
-* **Coverage:** Validación de lógica de negocio y manejo de excepciones (`ValidationException`).
 
 ### Frontend
-* **Thymeleaf:** Motor de plantillas para renderizado en servidor (SSR).
+* **Thymeleaf & Spring Security Dialect:** Motor de plantillas para renderizado en servidor (SSR) y renderizado condicional según roles.
 * **HTML5 & CSS3:** Diseño responsivo y estructurado (Sin frameworks JS pesados).
-
-### Funcionalidades Clave implementadas
-* **Arquitectura MVC:** Separación clara entre Modelos, Vistas y Controladores.
-* **Patrón DTO (Data Transfer Object):** Desacoplamiento de la capa de persistencia y la vista.
-* **Gestión de Proyectos Multimedia (Fase 1):** Sistema de creación y visualización que incluye:
-    * Subida de imágenes al servidor (*File Upload*).
-    * Renombrado seguro de archivos mediante UUID.
-    * Configuración de recursos estáticos para visualización en tiempo real.
-    * Control de formato (JPG/PNG) y peso optimizado (Max 1MB).
-* **Manejo de Errores:** Páginas personalizadas y captura de excepciones (I/O) para una UX robusta.
-
----
-
-## 🛡️ Política de Contacto y Privacidad
-
-Como desarrollador Backend, la seguridad y la privacidad de los datos son prioritarias. Por ello, he implementado las siguientes medidas en el Frontend:
-
-1.  **Protección de Datos:** No se exponen datos sensibles (teléfono, email personal) en el código fuente HTML para evitar el *scraping* por parte de bots y spammers.
-2.  **Formulario Seguro:** La comunicación se realiza a través de un formulario de contacto integrado con **Formspree**, garantizando que los mensajes lleguen sin comprometer la privacidad.
 
 ---
 
@@ -81,7 +70,6 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
 * ✅ **Gestión de Proyectos (Creación y Lectura):**
     * Formulario de creación con subida de imágenes (`MultipartFile`).
     * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
-    * Integración de la sección dinámica en la Landing Page.
 * ✅ **Gestión de Habilidades (CRUD Completo):**
     * Listado de administración con estilos personalizados.
     * Formulario para Crear y Editar habilidades.
@@ -90,23 +78,17 @@ Como desarrollador Backend, la seguridad y la privacidad de los datos son priori
 * ✅ **Gestión de Trayectoria (Experiencia y Educación):**
     * Controladores y vistas implementados para el historial académico y laboral.
     * Manejo avanzado de fechas con `LocalDate` y formateo visual en Thymeleaf (`#temporals`).
-    * Lógica condicional para experiencias "Actuales".
-* ✅ **Gestión de Información Personal (Perfil):**
-    * Estrategia "Single-User" (ID forzado) para gestión exclusiva del propietario.
-    * Arquitectura refactorizada: Validación web movida al Controlador, dejando el Servicio puro.
-    * Feedback al usuario corregido (`RedirectAttributes` vs `Model`).
-* ✅ **UI/UX y Navegación (Backoffice):**
-    * Implementación de menú de administración dedicado (`nav-admin`) y separación pública/privada.
+* ✅ **UI/UX y Navegación Dinámica:**
+    * Implementación de menú de administración dedicado (`nav-admin`).
     * Diseño Responsive mediante Media Queries para gestión desde móviles.
+    * **Renderizado Condicional:** Interfaz dinámica mediante `thymeleaf-extras-springsecurity6` para ocultar botones administrativos a usuarios no logueados.
     * Implementación de **Sticky Footer** usando Flexbox (100vh) para evitar espacios en blanco.
-    * Maquetación avanzada de tablas y formularios.
     * Página de error personalizada (`error-page.html`).
-* ✅ **Seguridad y Autenticación (Spring Security):**
-    * Integración de `spring-boot-starter-security`.
-    * Configuración granular de rutas (`SecurityFilterChain`): Backoffice protegido (`.authenticated()`) y Landing Page pública (`.permitAll()`).
-    * **Autenticación en Base de Datos:** Implementación de entidad `User`, DTO, Mapper y capa de persistencia (PostgreSQL).
-    * Implementación de `UserDetailsService` para conectar la base de datos con el flujo de login.
-    * Hasheo seguro de contraseñas utilizando el algoritmo `BCryptPasswordEncoder`.
+* ✅ **Seguridad y Autenticación Avanzada (Spring Security 6):**
+    * **Autenticación en Base de Datos:** Entidad `User`, DTO, Mapper, Repositorio (PostgreSQL) y `UserDetailsService` personalizado.
+    * Formulario de Login personalizado (`/login`) con manejo de errores, redirección inteligente de sesiones activas y mensajes de éxito (`?error` y `?logout`).
+    * Mecanismo seguro de cierre de sesión (`/logout`) con invalidación de sesión (`invalidateHttpSession`) y borrado de cookies.
+    * Hasheo de contraseñas utilizando algoritmo `BCryptPasswordEncoder`.
 * [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
 
 ---
