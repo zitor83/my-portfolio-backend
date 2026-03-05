@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProjectService implements IProjectService{
+public class ProjectServiceImpl implements IProjectService{
 
     private final IProjectRepository projectRepository;
 
@@ -24,5 +25,18 @@ public class ProjectService implements IProjectService{
     @Transactional
     public Project save(Project project) {
         return projectRepository.save(project);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        projectRepository.deleteById(id);
+
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Project> findById(Long id) {
+        return projectRepository.findById(id);
     }
 }

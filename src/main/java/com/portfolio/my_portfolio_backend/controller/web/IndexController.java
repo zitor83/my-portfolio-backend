@@ -1,4 +1,4 @@
-package com.portfolio.my_portfolio_backend.controller;
+package com.portfolio.my_portfolio_backend.controller.web;
 
 import com.portfolio.my_portfolio_backend.service.*;
 import lombok.RequiredArgsConstructor;

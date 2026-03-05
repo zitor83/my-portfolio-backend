@@ -39,10 +39,10 @@ public class ProjectRepositoryImpl implements IProjectRepository {
     }
 
     @Override
-    public Optional<Project> findById() {
+    public Optional<Project> findById(Long id) {
         String sql = "Select * from projects where id = ?";
         try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject(sql, ProjectRowMapper));
+            return Optional.ofNullable(jdbcTemplate.queryForObject(sql, ProjectRowMapper, id));
         } catch (EmptyResultDataAccessException e) {
 
             return Optional.empty();
@@ -68,12 +68,13 @@ public class ProjectRepositoryImpl implements IProjectRepository {
             project.setId(Objects.requireNonNull(keyHolder.getKey()).longValue());
 
         } else {
-            String sql = "UPDATE projects set title = ?, description = ?, imageUrl = ?, projectUrl = ?, personalInfoId = ? where id = ?";
+            String sql = "UPDATE projects set title = ?, description = ?, image_url = ?, project_url = ?, personal_info_id = ? where id = ?";
             jdbcTemplate.update(sql,
                     project.getTitle(),
                     project.getDescription(),
                     project.getImageUrl(),
                     project.getProjectUrl(),
+                    project.getPersonalInfoId(),
                     project.getId()
             );
 

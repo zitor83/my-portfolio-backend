@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IProjectRepository {
     List<Project> findAll();
-    Optional<Project> findById();
+    Optional<Project> findById(Long id);
     Project save(Project project);
     void deleteById(Long id);
 }

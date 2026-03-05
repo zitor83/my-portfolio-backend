@@ -4,15 +4,14 @@ import com.portfolio.my_portfolio_backend.service.IUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -34,6 +33,16 @@ public class WebSecurityConfig {
                                 .requestMatchers("/projects/new-project", "/projects/save", "/projects/edit/**", "/projects/delete/**").authenticated()
                                 .requestMatchers("/skills/new", "/skills/save", "/skills/edit/**", "/skills/delete/**").authenticated()
                                 .requestMatchers("/personal-info/create", "/personal-info/save", "/personal-info/edit/**").authenticated()
+
+                                //  Protegemos las rutas de la API, pero solo para las operaciones que modifican datos.
+                                //  La lectura de datos es pública para que cualquier frontend pueda consumir la API sin necesidad de autenticación.
+                                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/**").authenticated()
+                                .requestMatchers(HttpMethod.PUT, "/api/**").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/api/**").authenticated()
+
+                                // Permite el acceso a la documentación de Swagger sin autenticación)
+                                .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html").permitAll()
 
                                 //Las rutas de búsqueda por personalInfoId tambien deben ser protegidas si son para administración
                                 .requestMatchers("/education/personal/**", "/experience/personal/**", "/projects/personal/**", "/skills/personal/**").authenticated()

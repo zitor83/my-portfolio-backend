@@ -1,12 +1,8 @@
-package com.portfolio.my_portfolio_backend.controller;
+package com.portfolio.my_portfolio_backend.controller.web;
 
 import com.portfolio.my_portfolio_backend.dto.ExperienceDto;
-import com.portfolio.my_portfolio_backend.dto.SkillDto;
 import com.portfolio.my_portfolio_backend.mapper.ExperienceMapper;
-import com.portfolio.my_portfolio_backend.mapper.SkillMapper;
 import com.portfolio.my_portfolio_backend.model.Experience;
-import com.portfolio.my_portfolio_backend.model.Skill;
-import com.portfolio.my_portfolio_backend.repository.IExperienceRepository;
 import com.portfolio.my_portfolio_backend.service.IExperienceService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
