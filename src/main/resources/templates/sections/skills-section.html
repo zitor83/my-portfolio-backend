@@ -6,14 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <section id="skills" th:fragment="skills">
-        <h2>MIS HABILIDADES</h2>
-        <div class="skills-grid">
-            <div class="skill-card" th:each="skill : ${skills}">
-                <img th:src="${skill.iconClass}" th:alt="${skill.name}">
-                <h3 th:text="${skill.name}">HTML5</h3>
-            </div>
+<section id="skills" th:fragment="skills">
+    <h2>MIS HABILIDADES</h2>
+    <div class="skills-grid">
+        <div class="skill-card" th:each="skill : ${skills}">
+            <img th:src="${skill.iconClass}" th:alt="${skill.name}">
+            <h3 th:text="${skill.name}">HTML5</h3>
         </div>
-    </section>
+    </div>
+</section>
 </body>
 </html>
