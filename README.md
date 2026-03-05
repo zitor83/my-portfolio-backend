@@ -94,7 +94,7 @@ El proyecto expone sus datos a través de una API RESTful diseñada bajo estánd
 * ✅ **Seguridad y Autenticación:** Spring Security 6, BCrypt, Modo Dual (Público/Privado).
 * ✅ **Diseño de API REST:** Separación de controladores (`/web` vs `/api`), endpoints protegidos.
 * ✅ **Documentación Swagger:** Integración de OpenAPI 3.1 con interfaz interactiva.
-* ✅ **Gestión de Proyectos (CRUD Completo):** Listado, Creación con subida de imágenes, Edición inteligente (mantenimiento de imágenes) y Borrado.
+* ✅ **Gestión de Proyectos (CRUD Completo):** Listado, Creación con subida de imágenes, Edición inteligente (mantenimiento de imágenes) y Borrado en cascada (eliminación automática de archivos físicos huérfanos).
 * ✅ **Gestión de Habilidades, Trayectoria y Educación:** CRUD completo con controladores dedicados, vistas de administración y mapeo de DTOs.
 * ✅ **UI/UX y Navegación Dinámica:** Menús de administración dedicados, Sticky Footer, páginas de error personalizadas y renderizado condicional (`sec:authorize`).
 * ✅ **Calidad de Código:** Refactorización de repositorios con `JdbcTemplate` para consultas nativas seguras y transacciones en capa de servicio (`@Transactional`).

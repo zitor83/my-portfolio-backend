@@ -44,4 +44,29 @@ public class FileStorageService {
         return "/img/projects/" + fileName;
 
     }
+    /**
+     * Elimina el archivo físico del servidor basado en su URL relativa.
+     */
+    public void deleteFile(String imageUrl) {
+        if (imageUrl == null || imageUrl.isEmpty()) {
+            return; // No hay imagen que borrar
+        }
+
+        try {
+            // 1. Extraemos solo el nombre del archivo de la URL (ej: de "/img/projects/123.jpg" a "123.jpg")
+            String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+
+            // 2. Construimos la ruta física absoluta en el servidor
+            Path filePath = Paths.get(uploadDir, fileName).normalize();
+
+            // 3. Borramos el archivo si existe
+            Files.deleteIfExists(filePath);
+
+
+
+        } catch (IOException e) {
+            System.err.println("❌ Error al intentar eliminar la imagen física: " + imageUrl);
+            e.printStackTrace();
+        }
+    }
 }
