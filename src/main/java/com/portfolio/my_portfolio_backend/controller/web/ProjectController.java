@@ -12,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -64,6 +66,30 @@ public class ProjectController {
         } catch (IOException e) {
             return "error-page";
         }
+    }
+    @GetMapping("/edit/{id}")
+    public String editProject(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+        Optional<Project> projectOptional = projectService.findById(id);
+
+        if (projectOptional.isPresent()) {
+            ProjectDto projectDto = ProjectMapper.toDto(projectOptional.get());
+            model.addAttribute("projectDto", projectDto);
+            return "projects/form-project"; // Reutilizamos el formulario
+        } else {
+            redirectAttributes.addFlashAttribute("error", "El proyecto con ID " + id + " no existe.");
+            return "redirect:/projects";
+        }
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProject(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        try {
+            projectService.deleteById(id);
+            redirectAttributes.addFlashAttribute("message", "Proyecto eliminado con éxito.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el proyecto.");
+        }
+        return "redirect:/projects";
     }
 
 

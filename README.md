@@ -5,15 +5,17 @@
 [![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)]()
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-4-green?style=for-the-badge&logo=springboot)]()
 [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)]()
+[![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)]()
 
 Bienvenido al repositorio de mi portfolio profesional. Este proyecto es una aplicación web dinámica diseñada para mostrar mi trayectoria, habilidades y proyectos, construida con arquitectura backend robusta y desplegada en un entorno de producción real.
 
 ---
 
 ### 🟢 DEMO EN VIVO
-Puedes ver la aplicación funcionando y optimizada ahora mismo aquí:
+Puedes probar la aplicación y explorar la arquitectura backend ahora mismo:
 
-👉 **[https://jortiz.dev](https://jortiz.dev)**
+👉 **Website Principal:** [https://jortiz.dev](https://jortiz.dev)
+👉 **Documentación API (Swagger):** [https://jortiz.dev/swagger-ui/index.html](https://jortiz.dev/swagger-ui/index.html)
 
 > ⚡ **Rendimiento de Producción:**
 > El proyecto ha sido migrado de una capa gratuita (PaaS) a un entorno de infraestructura propia (VPS) para garantizar **alta disponibilidad (24/7) y tiempos de carga instantáneos**.
@@ -30,6 +32,7 @@ Sin embargo, **el objetivo principal de este proyecto no es solo el resultado vi
 1.  **Aplicar Arquitectura Empresarial:** Implementar patrones MVC, DTOs y Servicios en un entorno controlado.
 2.  **Gestionar Datos Reales:** Salir de los ejemplos teóricos y enfrentarme a problemas de persistencia, relaciones SQL y migraciones con PostgreSQL.
 3.  **Seguridad y Despliegue (DevOps):** Aprender a manejar servidores Linux, contenerización, proxies inversos, certificados SSL y pipelines de CI/CD.
+4.  **Diseño de APIs Profesionales:** Construir y documentar una API RESTful pública lista para ser consumida por terceros.
 
 En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis habilidades como **Backend & Software Developer**.
 
@@ -37,10 +40,22 @@ En resumen: Este portfolio es mi "laboratorio" para demostrar y afianzar mis hab
 
 ## 🔐 Arquitectura de Seguridad: Modo Dual (Público vs. Privado)
 
-Para demostrar mis conocimientos en ciberseguridad y control de accesos, la aplicación está diseñada con un **Modo Dual** utilizando Spring Security:
+Para demostrar mis conocimientos en ciberseguridad y control de accesos, la aplicación está diseñada con un **Modo Dual** utilizando Spring Security 6:
 
-* **Modo Escaparate (Público):** Cualquier visitante puede navegar por la página principal, ver mis proyectos y mi experiencia. La interfaz es limpia y de solo lectura. Thymeleaf oculta de forma dinámica cualquier botón o enlace administrativo (`sec:authorize`).
-* **Modo Backoffice (Privado):** A través de una ruta de acceso segura y un formulario de Login personalizado, el propietario (yo) puede iniciar sesión. Al autenticarme contra la base de datos (contraseñas encriptadas con BCrypt), el servidor me otorga una sesión segura, la interfaz se transforma y se habilitan los paneles CRUD completos para gestionar el contenido de la web en tiempo real.
+* **Modo Escaparate (Vistas Públicas y API GET):** Cualquier visitante puede navegar por la página principal (Thymeleaf) o consumir los endpoints `GET` de la API REST para consultar mis datos en formato JSON.
+* **Modo Backoffice (Vistas Privadas y API CUD):** A través de una ruta segura y un formulario de Login, el administrador se autentica contra la base de datos (contraseñas con BCrypt). Solo con una sesión válida se habilitan las vistas de administración y se permite el acceso a los métodos destructivos de la API (`POST`, `PUT`, `DELETE`), devolviendo un estricto código `403 Forbidden` a cualquier intento no autorizado.
+
+---
+
+## 📖 API REST y Documentación Interactiva (Swagger / OpenAPI 3)
+
+El proyecto expone sus datos a través de una API RESTful diseñada bajo estándares profesionales. Para facilitar su exploración y consumo, he integrado **Swagger UI / OpenAPI 3.1**.
+*Puedes explorarla en vivo aquí: [Swagger UI - Portfolio API](https://jortiz.dev/swagger-ui/index.html).*
+
+* **Documentación Viva:** Disponible directamente desde la interfaz web (botón "💻 API Docs" en la navegación).
+* **Estructura Organizada:** Endpoints clasificados lógicamente (Perfil, Proyectos, Experiencia, etc.) e implementando el estándar REST (pluralización de rutas, uso correcto de códigos HTTP).
+* **Esquemas Claros:** Uso de anotaciones `@Schema` en los DTOs para proporcionar ejemplos de peticiones y respuestas realistas.
+* **Pruebas en Vivo:** Posibilidad de ejecutar peticiones `GET` directamente desde el navegador, mientras que las operaciones de modificación quedan bloqueadas por Spring Security para usuarios anónimos.
 
 ---
 
@@ -48,57 +63,41 @@ Para demostrar mis conocimientos en ciberseguridad y control de accesos, la apli
 
 ### ☁️ Infraestructura y DevOps (Producción)
 * **VPS (DigitalOcean):** Servidor Linux (Ubuntu) dedicado.
-* **Docker & Docker Compose:** Contenerización de la aplicación y la base de datos para despliegues predecibles y aislados.
+* **Docker & Docker Compose:** Contenerización de la aplicación y la base de datos.
 * **Nginx:** Actuando como Proxy Inverso para gestionar el tráfico web.
 * **Let's Encrypt (Certbot):** Gestión de certificados SSL para conexiones seguras (HTTPS).
-* **GitHub Actions:** Pipeline de CI/CD para despliegue continuo y automático al hacer push a la rama principal.
-* **Gestión de Secretos:** Uso de `.env` en producción y GitHub Secrets para inyectar credenciales de forma segura.
+* **GitHub Actions:** Pipeline de CI/CD para despliegue continuo y automático.
+* **Gestión de Secretos:** Uso de `.env` en producción y GitHub Secrets.
 
 ### ⚙️ Backend (Core)
 * **Java 21:** Última versión LTS del lenguaje.
-* **Spring Boot 4:** Framework principal en su versión más reciente (4.0.1).
-* **Spring Security 6:** Gestión de accesos, protección de rutas, autenticación y manejo de sesiones.
-* **Spring Data JDBC:** Para la persistencia de datos eficiente.
+* **Spring Boot 4:** Framework principal.
+* **Spring Security 6:** Gestión de accesos, autenticación y protección de API.
+* **Springdoc OpenAPI:** Generación automática de documentación Swagger.
+* **Spring Data JDBC:** Para la persistencia de datos (con implementaciones nativas `JdbcTemplate` para optimización).
 * **PostgreSQL:** Base de datos relacional (Producción).
-* **Lombok:** Para reducción de código repetitivo (*Boilerplate*).
+* **Lombok:** Para reducción de *Boilerplate*.
 * **Bean Validation:** Validación de datos de entrada (JSR-380).
 
 ### 🧪 Testing & Calidad
-* **JUnit 5:** Framework de testing unitario.
-* **Mockito:** Mocking de repositorios para tests de servicios aislados.
+* **JUnit 5 & Mockito:** Frameworks para testing unitario y mocking de dependencias.
 
 ### 🎨 Frontend
-* **Thymeleaf & Spring Security Dialect:** Motor de plantillas para renderizado en servidor (SSR) y renderizado condicional según roles.
-* **HTML5 & CSS3:** Diseño responsivo y estructurado (Sin frameworks JS pesados).
+* **Thymeleaf & Spring Security Dialect:** Motor de plantillas (SSR) y renderizado condicional.
+* **HTML5 & CSS3:** Diseño responsivo y estructurado.
 
 ---
 
 ## 📅 Roadmap (Estado del Proyecto)
-* ✅ **Infraestructura y DevOps:** Migración a VPS propio, contenerización con Docker, Proxy Inverso con Nginx, HTTPS y pipeline CI/CD (GitHub Actions).
-* ✅ **Core & Despliegue Inicial:** Arquitectura MVC, Base de Datos PostgreSQL.
-* ✅ **Unit Testing:** Cobertura de Servicios (`Education`, `Experience`, `Skill`) con JUnit 5 y Mockito.
-* ✅ **Gestión de Proyectos (Creación y Lectura):**
-    * Formulario de creación con subida de imágenes (`MultipartFile`).
-    * Configuración de almacenamiento local y visualización dinámica (`ResourceHandler`).
-* ✅ **Gestión de Habilidades (CRUD Completo):**
-    * Listado de administración con estilos personalizados.
-    * Formulario para Crear y Editar habilidades.
-    * Funcionalidad de Eliminación con confirmación de seguridad.
-    * Mapeo avanzado Entidad-DTO.
-* ✅ **Gestión de Trayectoria (Experiencia y Educación):**
-    * Controladores y vistas implementados para el historial académico y laboral.
-    * Manejo avanzado de fechas con `LocalDate` y formateo visual en Thymeleaf (`#temporals`).
-* ✅ **UI/UX y Navegación Dinámica:**
-    * Implementación de menú de administración dedicado (`nav-admin`).
-    * Diseño Responsive mediante Media Queries para gestión desde móviles.
-    * **Renderizado Condicional:** Interfaz dinámica para ocultar botones administrativos a usuarios no logueados.
-    * Implementación de **Sticky Footer**.
-    * Página de error personalizada (`error-page.html`).
-* ✅ **Seguridad y Autenticación Avanzada (Spring Security 6):**
-    * **Autenticación en Base de Datos:** Entidad `User`, DTO, Mapper, Repositorio y `UserDetailsService` personalizado.
-    * Formulario de Login personalizado y manejo seguro de sesiones y cookies.
-    * Hasheo de contraseñas utilizando algoritmo `BCryptPasswordEncoder`.
-* [ ] **Completar CRUD Proyectos:** Implementar Update y Delete para la sección de proyectos (actualmente solo Create/Read).
+* ✅ **Infraestructura y DevOps:** Migración a VPS propio, Docker, Nginx, HTTPS y CI/CD.
+* ✅ **Core & Despliegue Inicial:** Arquitectura MVC, PostgreSQL.
+* ✅ **Seguridad y Autenticación:** Spring Security 6, BCrypt, Modo Dual (Público/Privado).
+* ✅ **Diseño de API REST:** Separación de controladores (`/web` vs `/api`), endpoints protegidos.
+* ✅ **Documentación Swagger:** Integración de OpenAPI 3.1 con interfaz interactiva.
+* ✅ **Gestión de Proyectos (CRUD Completo):** Listado, Creación con subida de imágenes, Edición inteligente (mantenimiento de imágenes) y Borrado.
+* ✅ **Gestión de Habilidades, Trayectoria y Educación:** CRUD completo con controladores dedicados, vistas de administración y mapeo de DTOs.
+* ✅ **UI/UX y Navegación Dinámica:** Menús de administración dedicados, Sticky Footer, páginas de error personalizadas y renderizado condicional (`sec:authorize`).
+* ✅ **Calidad de Código:** Refactorización de repositorios con `JdbcTemplate` para consultas nativas seguras y transacciones en capa de servicio (`@Transactional`).
 
 ---
 *Desarrollado con ❤️ por José Antonio Ortiz Sánchez*
