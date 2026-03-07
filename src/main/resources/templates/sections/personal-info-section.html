@@ -6,25 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="hero-section" th:fragment="hero">
-        <h1>Soy <span th:text="${personalInfo.firstName} + ' ' + ${personalInfo.lastName}"></span>
-            <br>
-            <span th:text="${personalInfo.title}"></span>
+<div class="hero-section" th:fragment="hero">
+
+    <div class="hero-text">
+        <span class="hero-greeting">Hola, soy</span>
+        <h1 class="hero-name" th:text="${personalInfo.firstName} + ' ' + ${personalInfo.lastName}">
+            José Antonio Ortiz Sánchez
         </h1>
-        <div class="profile-image-container">
-            <img th:src="${personalInfo.profileImageUrl}" alt="${personalInfo.firstName}+' Profile Picture'" class="profile-picture">
-        </div>
-        <div class="social-links">
-            <a th:href="${personalInfo.linkedinUrl}" target="_blank" class="btn-social" style="margin-right: 12px;font-size: 20px;color:white">
+        <p class="hero-title" th:text="${personalInfo.title}">
+            Java Backend Developer
+        </p>
+    </div>
+
+    <div class="profile-image-container">
+        <img th:src="${personalInfo.profileImageUrl}" alt="Profile Picture" class="profile-picture">
+    </div>
+
+    <div class="hero-actions">
+        <div class="action-group">
+            <a th:href="${personalInfo.linkedinUrl}" target="_blank" class="btn-secondary">
                 <i class="fab fa-linkedin"></i> LinkedIn
             </a>
-            <a th:href="${personalInfo.githubUrl}" target="_blank" class="btn-social" style="margin-right: 12px; font-size: 20px;color:white ">
+            <a th:href="${personalInfo.githubUrl}" target="_blank" class="btn-secondary">
                 <i class="fab fa-github"></i> Github
             </a>
+            <a th:href="@{/docs/CV_Jose_Ortiz_ES.pdf}" class="btn-secondary" download>
+                <i class="fa-solid fa-file-pdf"></i> CV (ES)
+            </a>
+            <a th:href="@{/docs/CV_Jose_Ortiz_EN.pdf}" class="btn-secondary" download>
+                <i class="fa-solid fa-file-pdf"></i> CV (EN)
+            </a>
         </div>
-        <a href="#projects">
-            <button> MIS PROYECTOS</button>
-        </a>
+
+        <div class="main-cta">
+            <a href="#projects">
+                <button class="btn-primary">MIS PROYECTOS</button>
+            </a>
+        </div>
     </div>
-</body>
+
+</div> </body>
 </html>
