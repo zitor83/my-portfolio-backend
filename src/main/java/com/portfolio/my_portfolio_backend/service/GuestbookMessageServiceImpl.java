@@ -3,6 +3,8 @@ package com.portfolio.my_portfolio_backend.service;
 import com.portfolio.my_portfolio_backend.model.GuestbookMessage;
 import com.portfolio.my_portfolio_backend.repository.GuestbookMessageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +35,13 @@ public class GuestbookMessageServiceImpl implements IGuestbookMessageService {
     @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
+    }
+    @Override
+    public List<GuestbookMessage> findApprovedMessages() {
+        return repository.findByStatusOrderByCreatedAtDesc("APPROVED");
+    }
+    @Override
+    public Page<GuestbookMessage> findApprovedMessages(Pageable pageable) {
+        return repository.findByStatusOrderByCreatedAtDesc("APPROVED", pageable);
     }
 }

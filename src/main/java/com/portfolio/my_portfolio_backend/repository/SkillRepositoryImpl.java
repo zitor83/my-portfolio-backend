@@ -72,7 +72,7 @@ public class SkillRepositoryImpl implements ISkillRepository {
 
     @Override
     public List<Skill> findAll() {
-        String sql = "Select * from skills";
+        String sql = "SELECT * FROM skills ORDER BY id ASC";
         return jdbcTemplate.query(sql, skillRowMapper);
     }
 
@@ -85,9 +85,7 @@ public class SkillRepositoryImpl implements ISkillRepository {
 
     @Override
     public List<Skill> findByPersonalInfoId(Long personalInfoId) {
-        String sql = "Select * from skills where personal_info_id = ?";
-
-
+        String sql = "SELECT * FROM skills WHERE personal_info_id = ? ORDER BY id ASC";
 
         return jdbcTemplate.query(sql, skillRowMapper, personalInfoId);
     }

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<section id="guestbook" th:fragment="guestbook">
+    <div class="container">
+        <h2>LIBRO DE VISITAS</h2>
+        <p class="guestbook-description">Déjame un comentario o feedback. Mi asistente de Inteligencia Artificial
+            moderará el mensaje antes de publicarlo.</p>
+
+        <div th:if="${errorMessage}" class="message-error" style="margin-bottom: 2rem; text-align: center;">
+            <p th:text="${errorMessage}" style="margin: 0;"></p>
+        </div>
+
+        <div th:if="${successMessage}" class="message-success" style="margin-bottom: 2rem; text-align: center;">
+            <p th:text="${successMessage}" style="margin: 0;"></p>
+
+        </div>
+        <!-- Grid Container de dos columnas -->
+        <div class="guestbook-grid">
+
+            <!-- Columna Izquierda: Formulario -->
+            <div class="guestbook-form-wrapper">
+                <h3 class="guestbook-subtitle">Deja tu Comentario para Mejorar mi contenido</h3>
+                <form th:action="@{/guestbook/send}" th:object="${guestbookMessageDto}" method="post"
+                      class="contact-form">
+
+                    <div class="form-group">
+                        <input type="text" th:field="*{name}" placeholder="Tu nombre" required>
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea th:field="*{message}" rows="6" placeholder="Escribe tu mensaje aquí..."
+                                  required></textarea>
+                        <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"
+                              class="error-message"></span>
+                    </div>
+
+                    <input type="text" th:field="*{extraField}" class="honeypot-field" autocomplete="off">
+
+                    <button type="submit">ENVIAR COMENTARIO</button>
+                </form>
+            </div>
+
+            <!-- Columna Derecha: Mensajes -->
+            <div class="guestbook-messages">
+                <h3 class="guestbook-title">Reseñas Recientes</h3>
+
+                <div th:if="${#lists.isEmpty(guestbookMessages)}" class="no-messages">
+                    <p>Aún no hay comentarios. ¡Sé el primero en dejar tu huella!</p>
+                </div>
+
+                <div class="messages-list">
+                    <div th:each="msg : ${guestbookMessages}" class="message-card">
+                        <div class="message-header">
+                            <strong th:text="${msg.name}" class="message-author">Nombre</strong>
+                            <span th:text="${#temporals.format(msg.createdAt, 'dd/MM/yyyy')}"
+                                  class="message-date">Fecha</span>
+                        </div>
+                        <p th:text="${msg.message}" class="message-content">El texto del mensaje irá aquí...</p>
+                    </div>
+                </div>
+
+                <!-- Controles de Paginación -->
+                <div th:if="${totalPages > 0}" class="pagination-controls">
+                    <!-- Flecha Izquierda (Página Anterior) -->
+                    <a th:href="${hasPrevious ? '/?page=' + (currentPage - 1) + '#guestbook' : '#'}"
+                       th:class="${hasPrevious ? 'pagination-arrow' : 'pagination-arrow disabled'}"
+                       th:attr="aria-disabled=${!hasPrevious}">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+
+                    <!-- Indicador de Página -->
+                    <span class="pagination-info">
+                        <span th:text="${currentPage + 1}">1</span> / <span th:text="${totalPages}">1</span>
+                    </span>
+
+                    <!-- Flecha Derecha (Página Siguiente) -->
+                    <a th:href="${hasNext ? '/?page=' + (currentPage + 1) + '#guestbook' : '#'}"
+                       th:class="${hasNext ? 'pagination-arrow' : 'pagination-arrow disabled'}"
+                       th:attr="aria-disabled=${!hasNext}">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

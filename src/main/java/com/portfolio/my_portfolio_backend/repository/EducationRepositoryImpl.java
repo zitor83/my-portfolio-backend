@@ -90,7 +90,7 @@ public class EducationRepositoryImpl implements IEducationRepository {
 
     @Override
     public List<Education> findAll() {
-        String sql = "Select * from educations";
+        String sql = "SELECT * FROM educations ORDER BY start_date DESC";
         return jdbcTemplate.query(sql, educationRowMapper);
     }
 
@@ -104,7 +104,7 @@ public class EducationRepositoryImpl implements IEducationRepository {
 
     @Override
     public List<Education> findByPersonalInfoId(Long personalInfoId) {
-        String sql = "Select * from educations where personal_info_id = ?";
+        String sql = "SELECT * FROM educations WHERE personal_info_id = ? ORDER BY start_date DESC";
 
         return jdbcTemplate.query(sql, educationRowMapper, personalInfoId);
     }

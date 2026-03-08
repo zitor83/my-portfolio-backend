@@ -82,7 +82,7 @@ public class ExperienceRepositoryImpl implements IExperienceRepository {
 
     @Override
     public List<Experience> findAll() {
-        String sql = "Select * from experiences";
+        String sql = "SELECT * FROM experiences ORDER BY start_date DESC";
 
         return jdbcTemplate.query(sql, experienceRowMapper);
     }
@@ -97,7 +97,7 @@ public class ExperienceRepositoryImpl implements IExperienceRepository {
 
     @Override
     public List<Experience> findByPersonalInfoId(Long personalInfoId) {
-        String sql = "Select * from experiences where personal_info_id = ?";
+        String sql = "SELECT * FROM experiences WHERE personal_info_id = ? ORDER BY start_date DESC";
 
         return jdbcTemplate.query(sql, experienceRowMapper, personalInfoId);
     }

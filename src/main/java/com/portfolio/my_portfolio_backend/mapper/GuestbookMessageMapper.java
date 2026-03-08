@@ -22,6 +22,18 @@ public class GuestbookMessageMapper {
     }
 
     public static GuestbookMessage toEntity(GuestbookMessageDto dto) {
+        return toEntity(dto, "PENDING");
+    }
+
+    /**
+     * Mapea DTO a Entidad con estado específico.
+     * Usado en el flujo de moderación síncrona para establecer APPROVED, REJECTED o PENDING.
+     *
+     * @param dto El DTO del formulario
+     * @param status El estado a asignar ("APPROVED", "REJECTED" o "PENDING")
+     * @return Entidad GuestbookMessage lista para guardar
+     */
+    public static GuestbookMessage toEntity(GuestbookMessageDto dto, String status) {
         if (dto == null) {
             return null;
         }
@@ -30,8 +42,8 @@ public class GuestbookMessageMapper {
         entity.setName(dto.getName());
         entity.setMessage(dto.getMessage());
 
-        // Asignamos valores por defecto para un nuevo mensaje
-        entity.setStatus("PENDING");
+        // Asignamos el estado especificado
+        entity.setStatus(status);
         entity.setCreatedAt(LocalDateTime.now());
 
         return entity;

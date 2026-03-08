@@ -34,7 +34,7 @@ public class ProjectRepositoryImpl implements IProjectRepository {
 
     @Override
     public List<Project> findAll() {
-        String sql = "Select * from projects";
+        String sql = "SELECT * FROM projects ORDER BY id ASC";
         return jdbcTemplate.query(sql, ProjectRowMapper);
     }
 

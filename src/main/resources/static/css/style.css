@@ -618,7 +618,345 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 1rem;
     margin-top: 1rem;
-
-
-
 }
+/* =========================================
+   SECCIÓN LIBRO DE VISITAS (GUESTBOOK)
+   ========================================= */
+
+/* Destacamos toda la sección con un fondo y un borde superior */
+#guestbook {
+    background: linear-gradient(to bottom, var(--color-dark), var(--color-blue));
+    padding: 5rem 0;
+    border-top: 2px solid var(--color-primary-gold);
+    border-radius: 1rem; /* Bordes redondeados para que parezca una "tarjeta" gigante */
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.2);
+    margin-top: 3rem;
+}
+
+/* Hacemos que el título principal brille en dorado */
+#guestbook h2 {
+    color: var(--color-primary-gold);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.guestbook-description {
+    text-align: center;
+    color: var(--color-white);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Grid Container - Dos columnas en desktop, una en móvil */
+.guestbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 3rem; /* Espacio entre columnas */
+    max-width: 120rem;
+    margin: 0 auto;
+    align-items: start; /* Alinea los elementos al inicio para que tengan alturas independientes */
+}
+
+/* Subtítulo para el formulario */
+.guestbook-subtitle {
+    color: var(--color-primary-gold);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Wrapper del formulario */
+.guestbook-form-wrapper {
+    background-color: rgba(42, 75, 140, 0.4); /* Fondo semi-transparente */
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(230, 242, 136, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.guestbook-form-wrapper .contact-form {
+    max-width: 100%; /* Ocupa todo el ancho del wrapper */
+}
+
+.guestbook-form-wrapper .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: border-color 0.3s ease;
+}
+
+.guestbook-form-wrapper input[type="text"]:focus,
+.guestbook-form-wrapper textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-gold);
+    box-shadow: 0 0 0 2px rgba(230, 242, 136, 0.2);
+}
+
+.guestbook-form-wrapper button[type="submit"] {
+    width: 100%;
+    background-color: var(--color-primary-gold);
+    color: var(--color-dark);
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.guestbook-form-wrapper button[type="submit"]:hover {
+    background-color: var(--color-white);
+    color: var(--color-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 242, 136, 0.4);
+}
+
+.honeypot-field {
+    display: none !important;
+}
+
+/* Contenedor de mensajes - Columna derecha */
+.guestbook-messages {
+    background-color: rgba(14, 20, 38, 0.3);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(230, 242, 136, 0.1);
+    max-height: 70rem; /* Altura máxima para scroll */
+    overflow-y: auto; /* Scroll vertical si hay muchos mensajes */
+}
+
+/* Estilo personalizado para el scrollbar */
+.guestbook-messages::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.guestbook-messages::-webkit-scrollbar-track {
+    background: rgba(42, 75, 140, 0.3);
+    border-radius: 1rem;
+}
+
+.guestbook-messages::-webkit-scrollbar-thumb {
+    background: var(--color-primary-gold);
+    border-radius: 1rem;
+}
+
+.guestbook-messages::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary-green);
+}
+
+.guestbook-title {
+    color: var(--color-primary-gold);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.no-messages {
+    text-align: center;
+    color: var(--color-white);
+    opacity: 0.7;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Lista y Tarjetas de Mensajes */
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.message-card {
+    background-color: rgba(42, 75, 140, 0.6);
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    border-left: 4px solid var(--color-primary-gold);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.message-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 12px rgba(230, 242, 136, 0.2);
+    background-color: rgba(42, 75, 140, 0.8);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.message-author {
+    color: var(--color-primary-gold);
+    font-size: 1.1rem;
+}
+
+.message-date {
+    font-size: 0.85rem;
+    color: #9bc4fb;
+    font-style: italic;
+}
+
+.message-content {
+    color: var(--color-white);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* =========================================
+   RESPONSIVE - DISEÑO MÓVIL
+   ========================================= */
+
+/* Tablet y dispositivos medianos */
+@media (max-width: 900px) {
+    .guestbook-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 2rem;
+    }
+
+    .guestbook-messages {
+        max-height: 50rem; /* Altura reducida en móvil */
+    }
+
+    #guestbook {
+        padding: 3rem 1rem;
+    }
+
+    #guestbook h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 600px) {
+    .guestbook-form-wrapper,
+    .guestbook-messages {
+        padding: 1.5rem;
+    }
+
+    .guestbook-subtitle,
+    .guestbook-title {
+        font-size: 1.2rem;
+    }
+
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .guestbook-messages {
+        max-height: 40rem;
+    }
+}
+
+/* =========================================
+   CONTROLES DE PAGINACIÓN
+   ========================================= */
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(230, 242, 136, 0.2);
+}
+
+.pagination-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(42, 75, 140, 0.6);
+    color: var(--color-primary-gold);
+    border: 2px solid var(--color-primary-gold);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pagination-arrow:hover:not(.disabled) {
+    background-color: var(--color-primary-gold);
+    color: var(--color-dark);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(230, 242, 136, 0.4);
+}
+
+.pagination-arrow.disabled {
+    background-color: rgba(42, 75, 140, 0.3);
+    color: rgba(230, 242, 136, 0.3);
+    border-color: rgba(230, 242, 136, 0.3);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination-arrow.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.pagination-info {
+    color: var(--color-white);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    min-width: 8rem;
+    text-align: center;
+}
+
+.pagination-info span:first-child {
+    color: var(--color-primary-gold);
+    font-size: 1.5rem;
+}
+
+/* Responsive para paginación */
+@media (max-width: 600px) {
+    .pagination-controls {
+        gap: 1.5rem;
+    }
+
+    .pagination-arrow {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.2rem;
+    }
+
+    .pagination-info {
+        font-size: 1.1rem;
+        min-width: 6rem;
+    }
+
+    .pagination-info span:first-child {
+        font-size: 1.3rem;
+    }
+}
+
