@@ -78,7 +78,6 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS guestbook_messages (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    occupation VARCHAR(100),
     message TEXT NOT NULL,
     status VARCHAR(20) NOT NULL,
     created_at TIMESTAMP NOT NULL
