@@ -39,7 +39,7 @@ public class IndexController {
             csrfToken.getToken();
         }
         // Si el modelo contiene el mensaje de exito, le decimos al navegador que recargue la pagina en 1
-        // segundos para limpiar el formulario y evitar reenvíos accidentales
+        // segundos para limpiar el formulario y evitar
         if (model.containsAttribute("successMessage")) {
             response.setHeader("Refresh", "1; URL=/#guestbook");
         }
