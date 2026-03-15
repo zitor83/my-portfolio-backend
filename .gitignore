@@ -36,5 +36,4 @@ build/
 .env
 *.env
 
-### AI Agent Guide ###
-AGENTS.md
+
