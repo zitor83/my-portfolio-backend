@@ -6,6 +6,7 @@
     --color-blue: #2A4B8C;
     --color-dark: #0E1426;
     --color-white:#ffffff;
+    --anchor-offset: 9rem;
 }
 
 html,body{
@@ -15,6 +16,21 @@ html,body{
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     scroll-behavior: smooth; /* Desplazamiento suave para los enlaces ancla */
+}
+
+/* Compensa el header fijo al navegar con #anchors */
+html {
+    scroll-padding-top: var(--anchor-offset);
+}
+
+section[id] {
+    scroll-margin-top: var(--anchor-offset);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --anchor-offset: 12rem;
+    }
 }
 
 *, *::after, *::before{
