@@ -7,8 +7,14 @@
 </head>
 <body>
 
-<nav th:fragment="nav">
-    <ul>
+<nav th:fragment="nav" data-nav-public>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="public-nav-list">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+    </button>
+
+    <ul id="public-nav-list">
         <li><a href="/">Inicio</a></li>
         <li><a href="#education">Educación</a></li>
         <li><a href="#skills">Habilidades</a></li>
@@ -21,6 +27,41 @@
         <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Admin</a></li>
         <li sec:authorize="isAuthenticated()"><a th:href="@{/education}">Admin</a></li>
     </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var nav = document.querySelector('nav[data-nav-public]');
+            if (!nav) return;
+
+            var toggleButton = nav.querySelector('.nav-toggle');
+            var menuList = nav.querySelector('#public-nav-list');
+            if (!toggleButton || !menuList) return;
+
+            function closeMenu() {
+                menuList.classList.remove('active');
+                toggleButton.setAttribute('aria-expanded', 'false');
+            }
+
+            toggleButton.addEventListener('click', function () {
+                var isActive = menuList.classList.toggle('active');
+                toggleButton.setAttribute('aria-expanded', String(isActive));
+            });
+
+            menuList.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        closeMenu();
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        });
+    </script>
 </nav>
 
 </body>
