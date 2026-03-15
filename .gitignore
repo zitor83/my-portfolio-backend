@@ -35,3 +35,6 @@ build/
 ### Secrets y Variables de Entorno ###
 .env
 *.env
+
+### AI Agent Guide ###
+AGENTS.md
