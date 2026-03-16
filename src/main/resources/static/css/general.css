@@ -1,11 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 :root{
-    --color-primary-gold:#E6F288;
-    --color-secondary-green:#7E8C70;
-    --color-primary-sky:#6581A6;
-    --color-blue: #2A4B8C;
-    --color-dark: #0E1426;
-    --color-white:#ffffff;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --color-accent: #C9C418; /* Amarillo neón vibrante */
+    --color-accent-hover: #fef08a; /* Amarillo más claro y brillante para el hover */
+    --color-danger: #ef4444;
+    --color-danger-hover: #dc2626;
+    --color-success: #22c55e;
+    --color-success-hover: #16a34a;
+
+    --border-soft: rgba(148, 163, 184, 0.32);
+    --border-soft-strong: rgba(148, 163, 184, 0.45);
+    --overlay-nav: rgba(15, 23, 42, 0.9);
+    --overlay-surface: rgba(30, 41, 59, 0.72);
+    --overlay-surface-strong: rgba(30, 41, 59, 0.85);
+    --overlay-light: rgba(248, 250, 252, 0.1);
+    --overlay-light-strong: rgba(248, 250, 252, 0.2);
+
+    --shadow-soft: rgba(2, 6, 23, 0.35);
+    --shadow-medium: rgba(2, 6, 23, 0.5);
+    --shadow-accent: rgba(250, 204, 21, 0.4);
+
+    --message-success-bg: rgba(34, 197, 94, 0.18);
+    --message-success-text: #bbf7d0;
+    --message-success-border: rgba(34, 197, 94, 0.4);
+    --message-error-bg: rgba(239, 68, 68, 0.16);
+    --message-error-text: #fecaca;
+    --message-error-border: rgba(239, 68, 68, 0.4);
+
+    /* Compatibilidad con variables existentes */
+    --color-primary-gold: var(--color-accent);
+    --color-secondary-green: var(--color-accent-hover);
+    --color-primary-sky: #38bdf8;
+    --color-blue: var(--bg-secondary);
+    --color-dark: var(--bg-primary);
+    --color-white: var(--text-primary);
     --anchor-offset: 6rem;
 }
 
@@ -40,8 +71,8 @@ section[id] {
 body{
     margin: 0;
     line-height: 1.6; /* Espaciado entre líneas */
-    color: #333; /* Color de texto base */
-    background-color: #f4f4f4; /* Un fondo suave para la página */
+    color: var(--text-primary); /* Color de texto base */
+    background-color: var(--bg-primary); /* Fondo principal dark */
     display: flex;
     flex-direction: column;
 }
@@ -65,7 +96,7 @@ footer {
 }
 
 footer a {
-    color: #ffc107; /* Enlaces en el footer */
+    color: var(--color-accent); /* Enlaces en el footer */
     text-decoration: none;
 }
 

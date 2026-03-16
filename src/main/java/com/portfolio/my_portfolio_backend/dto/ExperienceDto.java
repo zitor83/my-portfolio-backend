@@ -19,7 +19,7 @@ public class ExperienceDto {
     private String jobTitle;
 
     @NotBlank(message = "La empresa no puede estar vacia")
-    @Size(min = 2, max = 50, message = "La empresa debe tener entre 2 y 50 caracteres")
+    @Size(min = 2, max = 100, message = "La empresa debe tener entre 2 y 100 caracteres")
     private String companyName;
 
     @NotNull(message = "La fecha de inicio no puede ser nula")
@@ -32,7 +32,7 @@ public class ExperienceDto {
     private LocalDate endDate; //puede ser null si esta en curso
 
     @NotBlank(message = "La descripcion no puede estar vacia")
-    @Size(min = 10, max = 200, message = "La descripcion debe tener entre 10 y 200 caracteres")
+    @Size(min = 10, max = 500, message = "La descripcion debe tener entre 10 y 500 caracteres")
     private String description; // Responsabilidades o logros
 
     @NotNull(message = "El ID de informacion personal no puede ser nulo")
