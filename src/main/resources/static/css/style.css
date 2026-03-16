@@ -118,12 +118,16 @@ header nav ul li a:hover {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .hero-section button:hover {
     background-color: var(--color-dark);
     color: var(--color-primary-gold);
+    /* Solo añadimos un borde dorado y un resplandor fuerte */
+    border: 1px solid var(--color-primary-gold);
+    box-shadow: 0 0 15px var(--color-primary-gold);
+    transform: translateY(-4px);
 }
 
 .hero-section span {
@@ -171,12 +175,14 @@ main .container {
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #about button:hover {
     background-color: var(--color-dark);
     color: var(--color-primary-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-accent);
 }
 
 /* Sección MY EDUCATION / MY EXPERIENCE (pueden compartir estilos de lista) */
@@ -284,12 +290,13 @@ main .container {
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
-
 .project-card a:hover {
     background-color: var(--color-dark);
     color: var(--color-primary-gold);
+    border: 1px solid var(--color-primary-gold);
+    box-shadow: 0 0 15px var(--color-primary-gold);
 }
 
 .project-card:hover {
@@ -348,12 +355,14 @@ main .container {
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .contact-form button[type="submit"]:hover {
     background-color: var(--color-primary-gold);
     color: var(--color-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-accent);
 }
 
 footer {
@@ -603,12 +612,14 @@ footer {
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .login-form button:hover {
     background-color: var(--color-dark);
     color: var(--color-primary-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-accent);
 }
 .btn-logout {
     display: inline-block;
@@ -670,6 +681,7 @@ footer {
     color: var(--color-dark);
     border-color: var(--color-primary-gold);
     transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-accent);
 }
 
 /* Botón Principal (MIS PROYECTOS) */
@@ -692,7 +704,8 @@ footer {
 .btn-primary:hover {
     background-color: var(--color-accent-hover);
     color: var(--color-dark);
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-accent);
 }
 
 /* Ajuste móvil */
@@ -796,12 +809,13 @@ footer {
 }
 
 /* Wrapper del formulario */
-.guestbook-form-wrapper {
-    background-color: var(--overlay-surface); /* Fondo semi-transparente */
-    padding: 2.5rem;
-    border-radius: 1rem;
-    border: 1px solid var(--shadow-accent);
-    box-shadow: 0 4px 12px var(--shadow-soft);
+.guestbook-form-wrapper button[type="submit"]:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-dark);
+    transform: translateY(-4px);
+    /* Forzamos el resplandor aquí también */
+    box-shadow: 0 0 20px var(--color-primary-gold);
+}
 }
 
 .guestbook-form-wrapper .contact-form {
