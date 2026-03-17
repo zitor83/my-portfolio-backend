@@ -119,3 +119,16 @@ footer a:hover {
 .project-card:hover img {
     filter: grayscale(0%);
 }
+
+.skills-grid {
+    justify-items: stretch;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
